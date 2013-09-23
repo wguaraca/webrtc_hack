@@ -5,6 +5,10 @@
     "type": "git", 
     "url": "git@github.com:henrikjoreteg/SimpleWebRTC.git"
   },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
   "main": "./simplewebrtc.js",
   "description": "World's easiest webrtc",
   "dependencies": {
