@@ -1,0 +1,80 @@
+ 
+body{
+	background-color:#FFE0E0;
+	font-family: Open Sans;
+	color:#C0C0C0;
+	text-align: center;
+}
+
+a{border-bottom: 1px dotted #fff; color: #fff;} 
+.headtitle{font-family: Lobster Two; font-size: 80px; color: #fff; text-shadow: 1px 1px 1px #000; margin-bottom: 0px; padding-bottom: 0px;}
+.headtitle a{border-bottom: 0px;}
+
+.helpmeh{
+	font-family: Imprima; 
+	text-shadow:0 2px 2px rgba(0, 0, 0, 0.3);
+	color: #fff;
+	}
+
+a:hover {
+     border-bottom: 1px solid #fff; color: #fff;
+}
+.headline {
+font-family: Bree Serif; font-size: 30px; color: #fff; 
+text-shadow: 1px 1px 0.5px #000; 
+padding: 0px; 
+margin: 0px;
+
+
+}
+div#copybox { width:600px; height:auto;}
+div#sharebox {height:auto; width:600px; margin-top:20px;}
+.things {
+color: #000;
+}
+#wrapmeman{
+	color: #000;
+	width: 500px;
+    margin: auto;}
+	
+.section {
+	background: #fff;
+	position: relative;
+	padding: 2em 2.4em;
+	margin: 1em auto 2em auto;
+    width: 578;
+	
+
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+	border: 1px solid #CCC;
+}
+.codefy a{
+	color: #000;
+	}
+	
+	.spin{
+	
+-webkit-animation: spin 1.3s infinite linear;
+-moz-animation: spin 1.3s infinite linear;
+-o-animation: spin 1.3s infinite linear;
+-ms-animation: spin 1.3s infinite linear;
+}
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg);}
+100% { -webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin {
+0% { -moz-transform: rotate(0deg);}
+100% { -moz-transform: rotate(360deg);}
+}
+@-o-keyframes spin {
+0% { -o-transform: rotate(0deg);}
+100% { -o-transform: rotate(360deg);}
+}
+@-ms-keyframes spin {
+0% { -ms-transform: rotate(0deg);}
+100% { -ms-transform: rotate(360deg);}
+}
+

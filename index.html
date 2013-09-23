@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="http://fonts.googleapis.com/css?family=Ubuntu|Lobster|Bree+Serif|Open+Sans|Cookie|Lobster+Two|Imprima" rel="stylesheet" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Stay Connected!</title>
+
+    </head>
+    <body>
+            <br>
+            <br>
+                <h1 align="center" class="headtitle"> EazyMtg </h1>
+            <br>
+            <br>
+                <p align="center" class="headline"> Stay Connected With Your Family! </p>
+            <br>
+            <br> 
+        <center> 
+            <style>
+                #remotes video {
+                height: 150px;
+                }
+            </style>
+            <span style="color: #000;">
+                <p id="subTitle"></p>
+                <form id="createRoom" class="form-inline" method="post" action>
+                    <div class="input-prepend">
+                                <span class="add-on">Room Name:</span>
+                                <input id="sessionInput" align="center" placeholder= "Name your room here" type="text" size="70">
+                                <button type="submit" class="btn">Start Video</button>
+                    </div>
+                </form>
+            </span>
+            
+            <p></p>
+            <br>
+            <br>
+        
+        <div style="width:400px;height:300px;border:6px outset #e0fff0;">
+            <video id="localVideo" style="height: 300px;"></video>  
+        </div>
+
+                    
+        <div id="remotes"></div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="socket.io.js"></script>
+        <script src="simplewebrtc.bundle.js"></script>
+        <script>
+            // grab the room from the URL
+            var room = location.search && location.search.split('?')[1];
+
+            // create our webrtc connection
+            var webrtc = new SimpleWebRTC({
+                // the id/element dom element that will hold "our" video
+                localVideoEl: 'localVideo',
+                // the id/element dom element that will hold remote videos
+                remoteVideosEl: 'remotes',
+                // immediately ask for camera access
+                autoRequestMedia: true,
+                debug: true,
+                detectSpeakingEvents: true,
+                autoAdjustMic: false
+            });
+
+            // when it's ready, join if we got a room from the URL
+            webrtc.on('readyToCall', function () {
+                // you can name it anything
+                if (room) webrtc.joinRoom(room);
+            });
+            
+            // Since we use this twice we put it here
+            function setRoom(name) {
+                $('form').remove();
+                $('h1').text(name);
+                $('#subTitle').text('Link to join: ' + location.href);
+                $('body').addClass('active');
+            }
+
+            if (room) {
+                setRoom(room);
+            } else {
+                $('form').submit(function () {
+                    var val = $('#sessionInput').val().toLowerCase().replace(/\s/g, '-').replace(/[^A-Za-z0-9_\-]/g, '');
+                    webrtc.createRoom(val, function (err, name) {
+                        console.log(' create room cb', arguments);
+                    
+                        var newUrl = location.pathname + '?' + name;
+                        if (!err) {
+                            history.replaceState({foo: 'bar'}, null, newUrl);
+                            setRoom(name);
+                        } else {
+                            console.log(err);
+                        }
+                    });
+                    return false;          
+                });
+            }
+        </script>
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="bootstrap.min.js"></script>
+        </center>
+            <br>
+            <br>
+            <p>
+                <a href="#">Home</a>
+                // 
+                <a href="http://www.wguaraca.com/">Blog</a>
+                //
+                <a href="https://github.com/wguaraca/">GitHub</a>
+            </p>
+        <a href="https://twitter.com/wguaraca" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @wguaraca</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        </script>
+    </body>
+</html>
